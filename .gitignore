@@ -1,0 +1,4 @@
+# Ignora em qualquer nível de pasta do projeto
+**/.next/
+**/node_modules/
+**/dist/
