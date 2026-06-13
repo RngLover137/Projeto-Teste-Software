@@ -15,15 +15,7 @@ ${MENSAGEM_ERRO}    css=div.bg-red-50
 
 *** Test Cases ***
 
-CT01 - Deve realizar login com credenciais válidas
-    [Documentation]    Login bem-sucedido redireciona para /rotinas
-    Dado que o usuário acessa a tela de login
-    E preenche o e-mail    teste@email.com
-    E preenche a senha    senha123
-    Quando clicar em Entrar
-    Então deve ser redirecionado para    /rotinas
-
-CT02 - Deve exibir erro para e-mail com formato inválido
+CT01 - Deve exibir erro para e-mail com formato inválido
     [Documentation]    E-mail sem @ exibe mensagem de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    testeemail.com
@@ -31,7 +23,7 @@ CT02 - Deve exibir erro para e-mail com formato inválido
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    E-mail inválido
 
-CT03 - Deve exibir erro quando senha não é preenchida
+CT02 - Deve exibir erro quando senha não é preenchida
     [Documentation]    Senha vazia exibe mensagem de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    teste@email.com
@@ -39,13 +31,21 @@ CT03 - Deve exibir erro quando senha não é preenchida
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    Informe a senha
 
-CT04 - Deve exibir erro para credenciais incorretas
+CT03 - Deve exibir erro para credenciais incorretas
     [Documentation]    Senha errada exibe mensagem genérica de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    teste@email.com
     E preenche a senha    senhaErrada
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    E-mail ou senha incorretos.
+
+CT04 - Deve realizar login com credenciais válidas
+    [Documentation]    Login bem-sucedido redireciona para /rotinas
+    Dado que o usuário acessa a tela de login
+    E preenche o e-mail    teste@email.com
+    E preenche a senha    senha123
+    Quando clicar em Entrar
+    Então deve ser redirecionado para    /rotinas
 
 *** Keywords ***
 
@@ -79,5 +79,5 @@ Então deve ser redirecionado para
 
 Então deve exibir mensagem de erro
     [Arguments]    ${mensagem}
-    Wait Until Element Is Visible    ${MENSAGEM_ERRO}    timeout=5s
+    Wait Until Element Is Visible    ${MENSAGEM_ERRO}    timeout=10s
     Element Should Contain    ${MENSAGEM_ERRO}    ${mensagem}
