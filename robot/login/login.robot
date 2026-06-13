@@ -15,7 +15,7 @@ ${MENSAGEM_ERRO}    css=div.bg-red-50
 
 *** Test Cases ***
 
-CT01 - Deve exibir erro para e-mail com formato inválido
+CT02 - Deve exibir erro para e-mail com formato inválido
     [Documentation]    E-mail sem @ exibe mensagem de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    testeemail.com
@@ -23,7 +23,7 @@ CT01 - Deve exibir erro para e-mail com formato inválido
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    E-mail inválido
 
-CT02 - Deve exibir erro quando senha não é preenchida
+CT03 - Deve exibir erro quando senha não é preenchida
     [Documentation]    Senha vazia exibe mensagem de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    teste@email.com
@@ -31,7 +31,7 @@ CT02 - Deve exibir erro quando senha não é preenchida
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    Informe a senha
 
-CT03 - Deve exibir erro para credenciais incorretas
+CT04 - Deve exibir erro para credenciais incorretas
     [Documentation]    Senha errada exibe mensagem genérica de erro
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    teste@email.com
@@ -39,7 +39,7 @@ CT03 - Deve exibir erro para credenciais incorretas
     Quando clicar em Entrar
     Então deve exibir mensagem de erro    E-mail ou senha incorretos.
 
-CT04 - Deve realizar login com credenciais válidas
+CT01 - Deve realizar login com credenciais válidas
     [Documentation]    Login bem-sucedido redireciona para /rotinas
     Dado que o usuário acessa a tela de login
     E preenche o e-mail    teste@email.com
