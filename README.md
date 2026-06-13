@@ -1,6 +1,4 @@
-# 🫀 Saúde Unida
-
-Aplicação de cuidado familiar compartilhado. Crie rotinas semanais de saúde e bem-estar, convide familiares e gerencie tarefas com diferentes níveis de acesso.
+# Saúde Unida
 
 ## Stack
 
@@ -10,20 +8,6 @@ Aplicação de cuidado familiar compartilhado. Crie rotinas semanais de saúde e
 - **Drizzle ORM** — Type-safe ORM para PostgreSQL
 - **Supabase** — PostgreSQL como banco de dados
 - **JWT (jose)** + **bcryptjs** — Autenticação própria via cookies HTTP-only
-
----
-
-## Regras de Negócio
-
-- Cadastro com nome, e-mail e senha
-- Login com e-mail e senha
-- Rotinas são semanais (7 dias: Seg → Dom)
-- Membros têm 3 níveis de acesso:
-  - `viewer` — apenas visualiza rotina e tarefas
-  - `editor` — cria, edita e exclui tarefas
-  - `admin` — gerencia rotina e membros (inclui editor)
-- Se a rotina ficar sem nenhum admin, ela é **apagada automaticamente**
-- Usuário pode excluir a própria conta (cascade apaga tudo)
 
 ---
 
