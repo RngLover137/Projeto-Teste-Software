@@ -16,7 +16,7 @@ ${MENSAGEM_ERRO}    css=div.bg-red-50
 
 *** Test Cases ***
 
-CT01 - Deve exibir erro para nome com menos de 2 caracteres
+CT02 - Deve exibir erro para nome com menos de 2 caracteres
     [Documentation]    Nome com 1 caractere exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       A
@@ -25,7 +25,7 @@ CT01 - Deve exibir erro para nome com menos de 2 caracteres
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    Nome deve ter ao menos 2 caracteres
 
-CT02 - Deve exibir erro para e-mail com formato inválido
+CT03 - Deve exibir erro para e-mail com formato inválido
     [Documentation]    E-mail sem @ exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
@@ -34,7 +34,7 @@ CT02 - Deve exibir erro para e-mail com formato inválido
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    E-mail inválido
 
-CT03 - Deve exibir erro para senha curta
+CT04 - Deve exibir erro para senha curta
     [Documentation]    Senha com menos de 6 caracteres exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
@@ -43,7 +43,7 @@ CT03 - Deve exibir erro para senha curta
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    Senha deve ter ao menos 6 caracteres
 
-CT04 - Deve exibir erro para e-mail já cadastrado
+CT05 - Deve exibir erro para e-mail já cadastrado
     [Documentation]    E-mail duplicado exibe mensagem de conflito
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
@@ -53,7 +53,7 @@ CT04 - Deve exibir erro para e-mail já cadastrado
     Então deve exibir mensagem de erro    Este e-mail já está cadastrado.
 
 
-CT05 - Deve realizar cadastro com todos os dados válidos
+CT01 - Deve realizar cadastro com todos os dados válidos
     [Documentation]    Cadastro bem-sucedido redireciona para /rotinas
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
