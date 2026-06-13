@@ -16,16 +16,7 @@ ${MENSAGEM_ERRO}    css=div.bg-red-50
 
 *** Test Cases ***
 
-CT01 - Deve realizar cadastro com todos os dados válidos
-    [Documentation]    Cadastro bem-sucedido redireciona para /rotinas
-    Dado que o usuário acessa a tela de cadastro
-    E preenche o nome       Ana Costa
-    E preenche o e-mail     ana@email.com
-    E preenche a senha      minhasenha
-    Quando clicar em Criar Conta
-    Então deve ser redirecionado para    /rotinas
-
-CT02 - Deve exibir erro para nome com menos de 2 caracteres
+CT01 - Deve exibir erro para nome com menos de 2 caracteres
     [Documentation]    Nome com 1 caractere exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       A
@@ -34,7 +25,7 @@ CT02 - Deve exibir erro para nome com menos de 2 caracteres
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    Nome deve ter ao menos 2 caracteres
 
-CT03 - Deve exibir erro para e-mail com formato inválido
+CT02 - Deve exibir erro para e-mail com formato inválido
     [Documentation]    E-mail sem @ exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
@@ -43,7 +34,7 @@ CT03 - Deve exibir erro para e-mail com formato inválido
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    E-mail inválido
 
-CT04 - Deve exibir erro para senha curta
+CT03 - Deve exibir erro para senha curta
     [Documentation]    Senha com menos de 6 caracteres exibe mensagem de erro
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
@@ -52,15 +43,24 @@ CT04 - Deve exibir erro para senha curta
     Quando clicar em Criar Conta
     Então deve exibir mensagem de erro    Senha deve ter ao menos 6 caracteres
 
-CT05 - Deve exibir erro para e-mail já cadastrado
+CT04 - Deve exibir erro para e-mail já cadastrado
     [Documentation]    E-mail duplicado exibe mensagem de conflito
-    [Setup]    Garantir que usuário ana@email.com existe
+    Dado que o usuário acessa a tela de cadastro
+    E preenche o nome       Ana Costa
+    E preenche o e-mail     teste@email.com
+    E preenche a senha      minhasenha
+    Quando clicar em Criar Conta
+    Então deve exibir mensagem de erro    Este e-mail já está cadastrado.
+
+
+CT05 - Deve realizar cadastro com todos os dados válidos
+    [Documentation]    Cadastro bem-sucedido redireciona para /rotinas
     Dado que o usuário acessa a tela de cadastro
     E preenche o nome       Ana Costa
     E preenche o e-mail     ana@email.com
     E preenche a senha      minhasenha
     Quando clicar em Criar Conta
-    Então deve exibir mensagem de erro    Este e-mail já está cadastrado.
+    Então deve ser redirecionado para    /rotinas
 
 *** Keywords ***
 
@@ -101,13 +101,3 @@ Então deve exibir mensagem de erro
     [Arguments]    ${mensagem}
     Wait Until Element Is Visible    ${MENSAGEM_ERRO}    timeout=5s
     Element Should Contain    ${MENSAGEM_ERRO}    ${mensagem}
-
-Garantir que usuário ana@email.com existe
-    # Executa cadastro prévio para garantir a pré-condição do CT05
-    Go To    ${URL}
-    Wait Until Element Is Visible    ${INPUT_NOME}    timeout=10s
-    Input Text        ${INPUT_NOME}     Ana Costa
-    Input Text        ${INPUT_EMAIL}    ana@email.com
-    Input Password    ${INPUT_SENHA}    minhasenha
-    Click Button      ${BTN_CADASTRAR}
-    Sleep    1s
