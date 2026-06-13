@@ -37,7 +37,7 @@ export default function LoginPage() {
         </div>
 
         <div className="card p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
               <label className="label" htmlFor="email">E-mail</label>
               <div className="relative">
