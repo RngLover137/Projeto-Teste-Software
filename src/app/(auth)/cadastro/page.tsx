@@ -36,7 +36,7 @@ export default function CadastroPage() {
         </div>
 
         <div className="card p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" noValidate>
             <div>
               <label className="label" htmlFor="name">Nome completo</label>
               <div className="relative">
